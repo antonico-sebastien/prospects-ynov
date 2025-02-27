@@ -18,6 +18,7 @@
                     <th scope="col">Téléphone</th>
                     <th scope="col">Pointure</th>
                     <th scope="col">Message</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,16 @@
                         <td>{{ $prospect->phone }}</td>
                         <td>{{ $prospect->shoesize }}</td>
                         <td>{{ $prospect->messages->last()->message }}</td>
+                        <td>
+                            <form action="{{route('prospects.transform', [$prospect])}}" method="post" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Transformer en commande</button>
+                            </form>
+                            <form action="/prospects/{{ $prospect->id }}" method="post" style="display: inline;">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
                     </tr>
                 @endforeach
             </tbody>
