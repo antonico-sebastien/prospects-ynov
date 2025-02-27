@@ -24,4 +24,9 @@ class Order extends Model
             'comment' => '',
         ]);
     }
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class);
+    }
 }

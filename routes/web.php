@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProspectsController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\MaterialsController;
+use App\Http\Controllers\SuppliersController;
 use Illuminate\Http\Request;
 
 /*
@@ -32,4 +34,5 @@ Route::get('/orders/create', [OrdersController::class, 'create'])->name('orders.
 Route::post('/orders', [OrdersController::class, 'store'])->name('orders.store');
 Route::put('/orders/{order}/status', [OrdersController::class, 'changeStatus'])->name('orders.changeStatus');
 
-
+Route::resource('materials', MaterialsController::class);
+Route::resource('suppliers', SuppliersController::class);
